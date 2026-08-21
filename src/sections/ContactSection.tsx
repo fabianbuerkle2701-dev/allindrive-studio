@@ -9,7 +9,10 @@ export default function ContactSection() {
   return (
     <section
       id="kontakt"
-      className="relative bg-ink px-5 pb-16 pt-24 sm:px-8 sm:pt-28 md:px-10 md:pt-32"
+      // z-20 hebt den Abschluss ueber den Sticky-Stapel der Einblick-Sektion
+      // (z-10): dessen letzte Karte ragt sonst ueber den Abschluss und verdeckt
+      // ihn. Das opake bg-ink deckt den Ueberstand sauber ab.
+      className="relative z-20 bg-ink px-5 pb-16 pt-24 sm:px-8 sm:pt-28 md:px-10 md:pt-32"
     >
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 text-center sm:gap-10">
         <FadeIn as="h2" y={40}>
