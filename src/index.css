@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  background: #0c0c0c;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Die Ueberschriften der Seite: ein Verlauf von warmem Grau nach Papier,
+   von oben nach unten, damit die Zeile nach unten hin aufhellt. */
+.hero-heading {
+  background: linear-gradient(180deg, #7a6a55 0%, #f5ebda 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+::selection {
+  background: #ff9300;
+  color: #0c0c0c;
+}
+
+:focus-visible {
+  outline: 2px solid #ff9300;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
