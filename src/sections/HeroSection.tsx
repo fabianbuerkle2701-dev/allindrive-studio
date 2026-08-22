@@ -1,5 +1,6 @@
 import FadeIn from '../components/FadeIn'
 import Magnet from '../components/Magnet'
+import IphoneFrame from '../components/IphoneFrame'
 import { ContactButton } from '../components/Buttons'
 import { HERO, NAV_LINKS } from '../data/content'
 
@@ -64,31 +65,22 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      {/* Der aeussere Behaelter haelt die Position, weil FadeIn die
-          Transform-Eigenschaft fuer die eigene Bewegung belegt. */}
-      <div className="absolute left-1/2 top-1/2 z-10 w-[280px] -translate-x-1/2 -translate-y-1/2 sm:bottom-0 sm:top-auto sm:w-[360px] sm:translate-y-0 md:w-[440px] lg:w-[520px]">
-        <FadeIn delay={0.6} y={30}>
+      {/* Das iPhone ist die Buehne. Groesse ueber die BREITE: dann berechnet das
+          Seitenverhaeltnis die Hoehe, und die Breiten sind so gewaehlt, dass das
+          Geraet immer ganz in den Hero passt. Der aeussere Behaelter haelt die
+          Position, weil FadeIn und Magnet die Transform-Eigenschaft fuer ihre
+          Bewegung belegen. */}
+      <div className="absolute left-1/2 top-1/2 z-10 w-[205px] -translate-x-1/2 -translate-y-1/2 sm:bottom-[3vh] sm:top-auto sm:w-[255px] sm:translate-y-0 md:w-[290px] lg:w-[320px]">
+        <FadeIn delay={0.6} y={30} className="w-full">
           <Magnet
             padding={150}
             strength={3}
             activeTransition="transform 0.3s ease-out"
             inactiveTransition="transform 0.6s ease-in-out"
+            className="w-full"
+            wrapperClassName="w-full"
           >
-            {/* Hochformat 780x1706: ohne Hoehenbegrenzung waere das Bild
-                hoeher als der Bildschirm, deshalb oben beschnitten. */}
-            <img
-              src={HERO.portrait.src}
-              alt={HERO.portrait.alt}
-              width={HERO.portrait.width}
-              height={HERO.portrait.height}
-              fetchPriority="high"
-              decoding="async"
-              className="h-auto w-full max-h-[58vh] rounded-[28px] object-cover object-top sm:max-h-[62vh]"
-              style={{
-                border: '1px solid rgba(237, 228, 214, 0.14)',
-                boxShadow: '0 30px 80px rgba(0, 0, 0, 0.55)',
-              }}
-            />
+            <IphoneFrame src={HERO.portrait.src} alt={HERO.portrait.alt} className="w-full" />
           </Magnet>
         </FadeIn>
       </div>
