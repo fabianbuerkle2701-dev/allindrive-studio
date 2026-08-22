@@ -49,6 +49,10 @@
     />
     <link rel="preload" as="image" href="/app/allindrive-startbildschirm-demo.webp" fetchpriority="high" />
 
+    <!-- Die klickbare Vorschau laedt aus der echten App-Domain – Verbindung vorbereiten -->
+    <link rel="preconnect" href="https://allindrive.netlify.app" />
+    <link rel="dns-prefetch" href="https://allindrive.netlify.app" />
+
     <!-- Strukturierte Daten: nur nachpruefbare Angaben, keine erfundenen Bewertungen/Zahlen -->
     <script type="application/ld+json">
       {
