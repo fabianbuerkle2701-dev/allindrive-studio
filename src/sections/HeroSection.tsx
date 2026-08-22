@@ -34,7 +34,9 @@ export default function HeroSection() {
         ))}
       </FadeIn>
 
-      <div className="relative z-20 overflow-hidden px-6 md:px-10">
+      {/* pointer-events-none: die Wortmarke liegt ueber dem iPhone, soll aber
+          keine Klicks abfangen, damit die eingebettete App bedienbar bleibt. */}
+      <div className="pointer-events-none relative z-20 overflow-hidden px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
           {/* Die Wortmarke exakt wie in der App: Baloo 2 in 800, weiss, mit dem
               Punkt in Markenorange. Bewusst gemischte Schreibweise und keine
@@ -48,18 +50,21 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      <div className="relative z-20 mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
+      {/* Die untere Zeile liegt ueber der unteren Haelfte des iPhones. Als
+          transparenter Container wuerde sie sonst die Taps auf die Bottom-Nav der
+          App abfangen -> pointer-events-none, nur Claim und Button bleiben aktiv. */}
+      <div className="pointer-events-none relative z-20 mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
         <FadeIn
           as="p"
           delay={0.35}
           y={20}
-          className="max-w-[160px] font-light uppercase leading-snug tracking-wide text-chalk sm:max-w-[220px] md:max-w-[260px]"
+          className="pointer-events-auto max-w-[160px] font-light uppercase leading-snug tracking-wide text-chalk sm:max-w-[220px] md:max-w-[260px]"
           style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
         >
           {HERO.claim}
         </FadeIn>
 
-        <FadeIn delay={0.5} y={20}>
+        <FadeIn delay={0.5} y={20} className="pointer-events-auto">
           <ContactButton href="#kontakt" />
         </FadeIn>
       </div>

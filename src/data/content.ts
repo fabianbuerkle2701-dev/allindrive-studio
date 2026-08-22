@@ -6,6 +6,10 @@
  * Die Namen in den Bildschirmfotos sind erfunden, die Oberflaeche nicht.
  */
 
+// Macht absolute Asset-Pfade base-sicher: lokal (base '/') unveraendert, auf
+// GitHub Pages (base '/allindrive-studio/') korrekt praefixiert.
+const asset = (p: string): string => import.meta.env.BASE_URL + p.replace(/^\/+/, '')
+
 export const NAV_LINKS = [
   { label: 'Funktionen', href: '#funktionen' },
   { label: 'Einblick', href: '#einblick' },
@@ -22,7 +26,7 @@ export const HERO = {
    *  beim Antippen geladen; bis dahin liegt das Poster darüber. */
   demoUrl: 'https://allindrive.netlify.app/?demo=1',
   portrait: {
-    src: '/app/allindrive-startbildschirm-demo.jpg',
+    src: asset('/app/allindrive-startbildschirm-demo.webp'),
     alt: 'Allindrive auf dem iPhone: der Startbildschirm des Fahrlehrers mit Begrüßung, Kennzahlen und den heutigen Fahrstunden',
     width: 390,
     height: 844,
@@ -31,19 +35,19 @@ export const HERO = {
 
 /** Zwei Reihen, die beim Scrollen gegeneinander laufen. */
 export const MARQUEE_ROW_1 = [
-  { src: '/app/allindrive-kalender.webp', alt: 'Wochenkalender mit Fahrstunden von Montag bis Samstag' },
-  { src: '/app/allindrive-adk.webp', alt: 'Digitale Ausbildungsdiagrammkarte mit allen Abschnitten' },
-  { src: '/app/allindrive-schueler.webp', alt: 'Übersicht aller Fahrschüler mit Ausbildungsstand' },
-  { src: '/app/allindrive-startseite.webp', alt: 'Startseite mit den heutigen Terminen und offenen Vorschlägen' },
-  { src: '/app/allindrive-adk-karte.webp', alt: 'Abschnitt der Ausbildungsdiagrammkarte mit abgehakten Übungen' },
+  { src: asset('/app/allindrive-kalender.webp'), alt: 'Wochenkalender mit Fahrstunden von Montag bis Samstag' },
+  { src: asset('/app/allindrive-adk.webp'), alt: 'Digitale Ausbildungsdiagrammkarte mit allen Abschnitten' },
+  { src: asset('/app/allindrive-schueler.webp'), alt: 'Übersicht aller Fahrschüler mit Ausbildungsstand' },
+  { src: asset('/app/allindrive-startseite.webp'), alt: 'Startseite mit den heutigen Terminen und offenen Vorschlägen' },
+  { src: asset('/app/allindrive-adk-karte.webp'), alt: 'Abschnitt der Ausbildungsdiagrammkarte mit abgehakten Übungen' },
 ]
 
 export const MARQUEE_ROW_2 = [
-  { src: '/app/allindrive-schueler-mobil.webp', alt: 'Fahrschülerliste mit Fortschrittsringen' },
-  { src: '/app/allindrive-kalender-mobil.webp', alt: 'Wochenkalender auf dem Handy' },
-  { src: '/app/allindrive-startseite-mobil.webp', alt: 'Startseite mit Tages-Briefing und Kennzahlen' },
-  { src: '/app/allindrive-adk-mobil.webp', alt: 'Ausbildungsdiagrammkarte auf dem Handy' },
-  { src: '/app/allindrive-schuelerliste-iphone.webp', alt: 'Schülerliste auf dem iPhone' },
+  { src: asset('/app/allindrive-schueler-mobil.webp'), alt: 'Fahrschülerliste mit Fortschrittsringen' },
+  { src: asset('/app/allindrive-kalender-mobil.webp'), alt: 'Wochenkalender auf dem Handy' },
+  { src: asset('/app/allindrive-startseite-mobil.webp'), alt: 'Startseite mit Tages-Briefing und Kennzahlen' },
+  { src: asset('/app/allindrive-adk-mobil.webp'), alt: 'Ausbildungsdiagrammkarte auf dem Handy' },
+  { src: asset('/app/allindrive-schuelerliste-iphone.webp'), alt: 'Schülerliste auf dem iPhone' },
 ]
 
 export const ABOUT = {
@@ -51,10 +55,10 @@ export const ABOUT = {
   text: 'Allindrive entsteht in einer laufenden Fahrschule, nicht am Reißbrett. Digitale Ausbildungsdiagrammkarte, Fahrstundenplanung mit Konfliktprüfung, Rechnungen und eine eigene App für deine Fahrschüler. Erfasst wird nach der Fahrstunde auf dem Handy, nicht abends am Schreibtisch.',
   /** Vier kleine Aufnahmen, die den Text einrahmen. */
   corners: {
-    topLeft: { src: '/app/allindrive-adk-mobil.webp', alt: 'Ausbildungsdiagrammkarte auf dem Handy' },
-    bottomLeft: { src: '/app/allindrive-startseite-mobil.webp', alt: 'Tages-Briefing auf der Startseite' },
-    topRight: { src: '/app/allindrive-kalender-mobil.webp', alt: 'Wochenkalender auf dem Handy' },
-    bottomRight: { src: '/app/allindrive-schueler-mobil.webp', alt: 'Fahrschülerliste mit Fortschrittsringen' },
+    topLeft: { src: asset('/app/allindrive-adk-mobil.webp'), alt: 'Ausbildungsdiagrammkarte auf dem Handy' },
+    bottomLeft: { src: asset('/app/allindrive-startseite-mobil.webp'), alt: 'Tages-Briefing auf der Startseite' },
+    topRight: { src: asset('/app/allindrive-kalender-mobil.webp'), alt: 'Wochenkalender auf dem Handy' },
+    bottomRight: { src: asset('/app/allindrive-schueler-mobil.webp'), alt: 'Fahrschülerliste mit Fortschrittsringen' },
   },
 }
 
@@ -92,30 +96,30 @@ export const PROJECTS = [
     label: 'Fahrlehrer',
     name: 'Ausbildung',
     col1: [
-      { src: '/app/allindrive-adk-karte.webp', alt: 'Abschnitt der Ausbildungsdiagrammkarte mit abgehakten Übungen' },
-      { src: '/app/allindrive-adk-mobil.webp', alt: 'Ausbildungsdiagrammkarte auf dem Handy' },
+      { src: asset('/app/allindrive-adk-karte.webp'), alt: 'Abschnitt der Ausbildungsdiagrammkarte mit abgehakten Übungen' },
+      { src: asset('/app/allindrive-adk-mobil.webp'), alt: 'Ausbildungsdiagrammkarte auf dem Handy' },
     ],
-    col2: { src: '/app/allindrive-adk.webp', alt: 'Die vollständige digitale Ausbildungsdiagrammkarte mit allen Abschnitten' },
+    col2: { src: asset('/app/allindrive-adk.webp'), alt: 'Die vollständige digitale Ausbildungsdiagrammkarte mit allen Abschnitten' },
   },
   {
     no: '02',
     label: 'Fahrlehrer',
     name: 'Kalender',
     col1: [
-      { src: '/app/allindrive-kalender-mobil.webp', alt: 'Wochenkalender auf dem Handy' },
-      { src: '/app/allindrive-startseite-mobil.webp', alt: 'Startseite mit Tages-Briefing' },
+      { src: asset('/app/allindrive-kalender-mobil.webp'), alt: 'Wochenkalender auf dem Handy' },
+      { src: asset('/app/allindrive-startseite-mobil.webp'), alt: 'Startseite mit Tages-Briefing' },
     ],
-    col2: { src: '/app/allindrive-kalender.webp', alt: 'Wochenkalender mit Fahrstunden von Montag bis Samstag' },
+    col2: { src: asset('/app/allindrive-kalender.webp'), alt: 'Wochenkalender mit Fahrstunden von Montag bis Samstag' },
   },
   {
     no: '03',
     label: 'Fahrschüler',
     name: 'Ausbildungsstand',
     col1: [
-      { src: '/app/allindrive-schueler-mobil.webp', alt: 'Fahrschülerliste mit Fortschrittsringen' },
-      { src: '/app/allindrive-startseite.webp', alt: 'Startseite mit heutigen Terminen und offenen Terminvorschlägen' },
+      { src: asset('/app/allindrive-schueler-mobil.webp'), alt: 'Fahrschülerliste mit Fortschrittsringen' },
+      { src: asset('/app/allindrive-startseite.webp'), alt: 'Startseite mit heutigen Terminen und offenen Terminvorschlägen' },
     ],
-    col2: { src: '/app/allindrive-schuelerliste-iphone.webp', alt: 'Schülerliste auf dem iPhone mit Fortschrittsringen' },
+    col2: { src: asset('/app/allindrive-schuelerliste-iphone.webp'), alt: 'Schülerliste auf dem iPhone mit Fortschrittsringen' },
   },
 ]
 
