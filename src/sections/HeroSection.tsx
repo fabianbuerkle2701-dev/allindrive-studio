@@ -34,9 +34,7 @@ export default function HeroSection() {
         ))}
       </FadeIn>
 
-      {/* pointer-events-none: die Wortmarke liegt ueber dem iPhone, soll aber
-          keine Klicks abfangen, damit die eingebettete App bedienbar bleibt. */}
-      <div className="pointer-events-none relative z-20 overflow-hidden px-6 md:px-10">
+      <div className="relative overflow-hidden px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
           {/* Die Wortmarke exakt wie in der App: Baloo 2 in 800, weiss, mit dem
               Punkt in Markenorange. Bewusst gemischte Schreibweise und keine
@@ -50,40 +48,41 @@ export default function HeroSection() {
         </FadeIn>
       </div>
 
-      {/* Die untere Zeile liegt ueber der unteren Haelfte des iPhones. Als
-          transparenter Container wuerde sie sonst die Taps auf die Bottom-Nav der
-          App abfangen -> pointer-events-none, nur Claim und Button bleiben aktiv. */}
-      <div className="pointer-events-none relative z-20 mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
+      {/* Das iPhone sitzt mittig in der Flaeche zwischen Wortmarke und der unteren
+          Zeile – kein Ueberlappen mehr. Groesse ueber die HOEHE begrenzt, damit es
+          auf jedem Viewport ganz hineinpasst; die Breite folgt aus dem Format. */}
+      <div className="flex min-h-0 flex-1 items-center justify-center px-6 py-3">
+        <FadeIn
+          delay={0.6}
+          y={30}
+          // max-h min(px, 100%): begrenzt das Geraet auf die freie Flaeche, damit
+          // es auf kurzen Viewports nie in die Wortmarke ragt.
+          className="inline-flex h-[46vh] max-h-[min(580px,100%)] items-center sm:h-[54vh]"
+        >
+          {/* Bewusst still: kein Magnet-Effekt. Das iPhone soll man anschauen und
+              darin klicken, nicht dem Zeiger nachjagen. */}
+          <IphoneFrame
+            src={HERO.portrait.src}
+            alt={HERO.portrait.alt}
+            demoUrl={HERO.demoUrl}
+            className="h-full w-auto"
+          />
+        </FadeIn>
+      </div>
+
+      <div className="flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
         <FadeIn
           as="p"
           delay={0.35}
           y={20}
-          className="pointer-events-auto max-w-[160px] font-light uppercase leading-snug tracking-wide text-chalk sm:max-w-[220px] md:max-w-[260px]"
+          className="max-w-[160px] font-light uppercase leading-snug tracking-wide text-chalk sm:max-w-[220px] md:max-w-[260px]"
           style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
         >
           {HERO.claim}
         </FadeIn>
 
-        <FadeIn delay={0.5} y={20} className="pointer-events-auto">
+        <FadeIn delay={0.5} y={20}>
           <ContactButton href="#kontakt" />
-        </FadeIn>
-      </div>
-
-      {/* Das iPhone ist die Buehne. Groesse ueber die BREITE: dann berechnet das
-          Seitenverhaeltnis die Hoehe, und die Breiten sind so gewaehlt, dass das
-          Geraet immer ganz in den Hero passt. Der aeussere Behaelter haelt die
-          Position, weil FadeIn und Magnet die Transform-Eigenschaft fuer ihre
-          Bewegung belegen. */}
-      <div className="absolute left-1/2 top-1/2 z-10 w-[216px] -translate-x-1/2 -translate-y-1/2 sm:bottom-[2.5vh] sm:top-auto sm:w-[224px] sm:translate-y-0 md:w-[244px] lg:w-[264px]">
-        <FadeIn delay={0.6} y={30} className="w-full">
-          {/* Bewusst still: kein Magnet-Effekt mehr. Das iPhone soll man
-              anschauen und spaeter darin klicken, nicht dem Zeiger nachjagen. */}
-          <IphoneFrame
-            src={HERO.portrait.src}
-            alt={HERO.portrait.alt}
-            demoUrl={HERO.demoUrl}
-            className="w-full"
-          />
         </FadeIn>
       </div>
     </section>
