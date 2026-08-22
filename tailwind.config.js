@@ -11,6 +11,8 @@ export default {
       },
       fontFamily: {
         sans: ['Kanit', 'sans-serif'],
+        // Die Marke selbst: exakt die Wortmarkenschrift aus der App.
+        brand: ['"Baloo 2"', 'sans-serif'],
       },
     },
   },

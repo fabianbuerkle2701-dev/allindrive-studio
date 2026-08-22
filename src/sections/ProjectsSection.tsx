@@ -100,15 +100,17 @@ function Karte({ project, index, total }: KarteProps) {
             />
           </div>
 
-          {/* Ab sm zieht sich das hohe Bild auf die Hoehe der linken Spalte,
-              statt einer eigenen Rechnung zu folgen: Die beiden Spalten waren
-              sonst je nach Fensterbreite um bis zu acht Pixel versetzt. */}
+          {/* Ab sm ist die Hoehe genau die der linken Spalte, ausgerechnet aus
+              deren beiden Bildern plus Abstand. h-full waere hier falsch: In
+              einem Raster mit automatischer Zeilenhoehe kann sich 100 Prozent
+              nicht aufloesen, das Bild faellt auf seine natuerliche Hoehe
+              zurueck und die Karten werden 705, 905 und 1590 Pixel hoch. */}
           <img
             src={project.col2.src}
             alt={project.col2.alt}
             loading="lazy"
             decoding="async"
-            className={`h-[clamp(302px,38vw,578px)] w-full object-cover object-top sm:h-full ${RADIUS}`}
+            className={`h-[clamp(302px,38vw,578px)] w-full min-h-0 object-cover object-top sm:h-[calc(clamp(130px,16vw,230px)_+_clamp(160px,22vw,340px)_+_1rem)] ${RADIUS}`}
           />
         </div>
       </motion.div>

@@ -1,5 +1,5 @@
 import { useMemo, type ElementType, type ReactNode } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 type FadeInProps = {
   children: ReactNode
@@ -30,6 +30,18 @@ export default function FadeIn({
   style,
 }: FadeInProps) {
   const Tag = useMemo(() => motion.create(as as ElementType), [as])
+  const reduziert = useReducedMotion()
+
+  // Wer weniger Bewegung eingestellt hat, bekommt den Inhalt sofort und
+  // vollstaendig. Ohne diesen Fall bliebe die halbe Seite unsichtbar, denn
+  // der Startzustand ist opacity 0.
+  if (reduziert) {
+    return (
+      <Tag className={className} style={style}>
+        {children}
+      </Tag>
+    )
+  }
 
   return (
     <Tag

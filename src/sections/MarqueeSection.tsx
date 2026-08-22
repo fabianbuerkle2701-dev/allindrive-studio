@@ -75,7 +75,7 @@ export default function MarqueeSection() {
   const shift = offset - 200
 
   return (
-    <section ref={sectionRef} className="overflow-hidden bg-ink pb-10 pt-24 sm:pt-32 md:pt-40">
+    <section id="galerie" ref={sectionRef} className="overflow-hidden bg-ink pb-10 pt-24 sm:pt-32 md:pt-40">
       <div className="flex flex-col gap-3">
         <MarqueeRow images={MARQUEE_ROW_1} translate={shift} />
         <MarqueeRow images={MARQUEE_ROW_2} translate={-shift} />

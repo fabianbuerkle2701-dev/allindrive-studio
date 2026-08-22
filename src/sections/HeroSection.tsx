@@ -36,8 +36,11 @@ export default function HeroSection() {
 
       <div className="relative z-20 overflow-hidden px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
-          <h1 className="hero-heading mt-6 w-full whitespace-nowrap font-black uppercase leading-none tracking-tight text-[14vw] sm:mt-4 sm:text-[15vw] md:-mt-5 md:text-[16vw] lg:text-[17.5vw]">
-            {HERO.wordmark}
+          {/* Die Wortmarke exakt wie in der App: Baloo 2 in 800, weiss, mit dem
+              Punkt in Markenorange. Bewusst gemischte Schreibweise und keine
+              Versalien, damit es dieselbe Marke ist und nicht nur derselbe Name. */}
+          <h1 className="mt-6 w-full whitespace-nowrap font-brand font-extrabold leading-none tracking-tight text-white text-[12.5vw] sm:mt-4 sm:text-[13.5vw] md:-mt-5 md:text-[15vw] lg:text-[15.5vw]">
+            Allindrive<span className="text-flame">.</span>
             {/* Sichtbar ist nur die Wortmarke. Wonach gesucht wird, steht
                 trotzdem in der Ueberschrift, nur eben unsichtbar. */}
             <span className="sr-only">{HERO.keyword}</span>

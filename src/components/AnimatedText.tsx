@@ -1,5 +1,11 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from 'framer-motion'
 
 type AnimatedTextProps = {
   text: string
@@ -38,12 +44,24 @@ function Zeichen({
 
 export default function AnimatedText({ text, className, style }: AnimatedTextProps) {
   const ref = useRef<HTMLParagraphElement>(null)
+  const reduziert = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start 0.8', 'end 0.2'],
   })
 
   const chars = Array.from(text)
+
+  // Wer weniger Bewegung eingestellt hat, bekommt den Satz vollstaendig und
+  // ruhig. Der Aufbau Zeichen fuer Zeichen laesst den Text sonst dauerhaft
+  // halb sichtbar erscheinen, sobald jemand nicht durchscrollt.
+  if (reduziert) {
+    return (
+      <p ref={ref} className={className} style={style}>
+        {text}
+      </p>
+    )
+  }
 
   return (
     <p ref={ref} className={className} style={style} aria-label={text}>
