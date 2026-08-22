@@ -1,5 +1,6 @@
 import FadeIn from '../components/FadeIn'
 import IphoneFrame from '../components/IphoneFrame'
+import HeroBackground from '../components/HeroBackground'
 import { ContactButton } from '../components/Buttons'
 import { HERO, NAV_LINKS } from '../data/content'
 
@@ -17,6 +18,9 @@ export default function HeroSection() {
       // eigenen Scroll-Container zu machen.
       style={{ overflowX: 'clip' }}
     >
+      {/* Animierter Nacht-Strasse-Hintergrund, hinter allem. */}
+      <HeroBackground />
+
       <FadeIn
         as="nav"
         delay={0}
@@ -34,7 +38,7 @@ export default function HeroSection() {
         ))}
       </FadeIn>
 
-      <div className="relative overflow-hidden px-6 md:px-10">
+      <div className="relative z-10 overflow-hidden px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
           {/* Die Wortmarke exakt wie in der App: Baloo 2 in 800, weiss, mit dem
               Punkt in Markenorange. Bewusst gemischte Schreibweise und keine
@@ -53,7 +57,7 @@ export default function HeroSection() {
           gedeckelt bei einer grossen Pixelhoehe; die Breite ergibt sich aus dem
           Format. Kein Ueberlappen der Wortmarke, weil das Geraet erst darunter
           beginnt. */}
-      <div className="flex min-h-0 flex-1 items-center justify-center px-6 pb-4">
+      <div className="relative z-10 flex min-h-0 flex-1 items-center justify-center px-6 pb-4">
         <FadeIn
           delay={0.6}
           y={30}
