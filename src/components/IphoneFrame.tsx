@@ -79,6 +79,9 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
     top: topPx,
     width: LOGICAL_W,
     height: LOGICAL_H,
+    // Ohne dies klemmt Tailwinds Preflight (img { max-width:100% }) das Poster
+    // auf die Screenbreite, bevor der Transform greift -> Bild zu schmal, links.
+    maxWidth: 'none',
     transform: `scale(${scale})`,
     transformOrigin: 'top left',
   }
