@@ -1,8 +1,12 @@
+import { ArrowRight } from 'lucide-react'
 import FadeIn from '../components/FadeIn'
 import { SERVICES } from '../data/content'
 
 /** 1px Haarlinie zwischen den Eintraegen. */
 const RULE = '1px solid rgba(12, 12, 12, 0.15)'
+
+// Base-sicher: lokal '/funktionen/', im Build '/allindrive-studio/funktionen/'.
+const FUNKTIONEN_HREF = import.meta.env.BASE_URL + 'funktionen/'
 
 /**
  * Heller Block auf dunkler Seite: die fuenf Funktionen als nummerierte Liste.
@@ -59,6 +63,16 @@ export default function ServicesSection() {
             </div>
           </FadeIn>
         ))}
+
+        <FadeIn className="mt-12 flex justify-center sm:mt-16">
+          <a
+            href={FUNKTIONEN_HREF}
+            className="group inline-flex items-center gap-2 rounded-full border-2 border-ink/80 px-7 py-3 text-sm font-medium uppercase tracking-widest text-ink transition-colors duration-200 ease-out hover:bg-ink hover:text-paper sm:px-9 sm:py-4 sm:text-base"
+          >
+            Alle Funktionen im Detail
+            <ArrowRight aria-hidden="true" strokeWidth={2} className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 sm:h-5 sm:w-5" />
+          </a>
+        </FadeIn>
       </div>
     </section>
   )

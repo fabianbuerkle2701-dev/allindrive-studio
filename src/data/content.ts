@@ -11,7 +11,9 @@
 const asset = (p: string): string => import.meta.env.BASE_URL + p.replace(/^\/+/, '')
 
 export const NAV_LINKS = [
-  { label: 'Funktionen', href: '#funktionen' },
+  // Funktionen haben ihren einen Hauptort auf der eigenen Unterseite; die
+  // Startseiten-Sektion ist nur der Ueberblick und verlinkt dorthin.
+  { label: 'Funktionen', href: asset('/funktionen/') },
   { label: 'Einblick', href: '#einblick' },
   { label: 'Über', href: '#ueber' },
   { label: 'Kontakt', href: '#kontakt' },
