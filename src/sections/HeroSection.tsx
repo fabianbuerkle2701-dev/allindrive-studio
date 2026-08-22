@@ -1,5 +1,4 @@
 import FadeIn from '../components/FadeIn'
-import Magnet from '../components/Magnet'
 import IphoneFrame from '../components/IphoneFrame'
 import { ContactButton } from '../components/Buttons'
 import { HERO, NAV_LINKS } from '../data/content'
@@ -72,16 +71,9 @@ export default function HeroSection() {
           Bewegung belegen. */}
       <div className="absolute left-1/2 top-1/2 z-10 w-[205px] -translate-x-1/2 -translate-y-1/2 sm:bottom-[3vh] sm:top-auto sm:w-[255px] sm:translate-y-0 md:w-[290px] lg:w-[320px]">
         <FadeIn delay={0.6} y={30} className="w-full">
-          <Magnet
-            padding={150}
-            strength={3}
-            activeTransition="transform 0.3s ease-out"
-            inactiveTransition="transform 0.6s ease-in-out"
-            className="w-full"
-            wrapperClassName="w-full"
-          >
-            <IphoneFrame src={HERO.portrait.src} alt={HERO.portrait.alt} className="w-full" />
-          </Magnet>
+          {/* Bewusst still: kein Magnet-Effekt mehr. Das iPhone soll man
+              anschauen und spaeter darin klicken, nicht dem Zeiger nachjagen. */}
+          <IphoneFrame src={HERO.portrait.src} alt={HERO.portrait.alt} className="w-full" />
         </FadeIn>
       </div>
     </section>
