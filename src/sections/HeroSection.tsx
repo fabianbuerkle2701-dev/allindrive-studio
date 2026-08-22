@@ -1,6 +1,6 @@
 import FadeIn from '../components/FadeIn'
 import IphoneFrame from '../components/IphoneFrame'
-import HeroBackground from '../components/HeroBackground'
+import HeroVideo from '../components/HeroVideo'
 import { ContactButton } from '../components/Buttons'
 import { HERO, NAV_LINKS } from '../data/content'
 
@@ -18,8 +18,8 @@ export default function HeroSection() {
       // eigenen Scroll-Container zu machen.
       style={{ overflowX: 'clip' }}
     >
-      {/* Animierter Nacht-Strasse-Hintergrund, hinter allem. */}
-      <HeroBackground />
+      {/* Selbst gerendertes Nacht-Fahrt-Video, scroll-gescrubbt, hinter allem. */}
+      <HeroVideo />
 
       <FadeIn
         as="nav"
