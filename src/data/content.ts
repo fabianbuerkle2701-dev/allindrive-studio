@@ -18,11 +18,14 @@ export const HERO = {
   /** Steht nur fuer Suchmaschinen und Screenreader in der Ueberschrift. */
   keyword: 'Fahrschulsoftware für Fahrlehrer',
   claim: 'fahrschulsoftware für fahrlehrer, die den arbeitstag nicht am schreibtisch verbringen',
+  /** Die echte, klickbare App als schreibgeschützter Demo-Account. Wird erst
+   *  beim Antippen geladen; bis dahin liegt das Poster darüber. */
+  demoUrl: 'https://allindrive.netlify.app/?demo=1',
   portrait: {
-    src: '/app/allindrive-schuelerliste-iphone.webp',
-    alt: 'Allindrive auf dem iPhone: die Schülerliste mit Namen, Stundenzahl, nächstem Termin und dem Ausbildungsstand als Ring in Prozent',
-    width: 780,
-    height: 1706,
+    src: '/app/allindrive-startbildschirm-demo.jpg',
+    alt: 'Allindrive auf dem iPhone: der Startbildschirm des Fahrlehrers mit Begrüßung, Kennzahlen und den heutigen Fahrstunden',
+    width: 390,
+    height: 844,
   },
 }
 

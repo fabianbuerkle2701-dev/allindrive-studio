@@ -73,7 +73,12 @@ export default function HeroSection() {
         <FadeIn delay={0.6} y={30} className="w-full">
           {/* Bewusst still: kein Magnet-Effekt mehr. Das iPhone soll man
               anschauen und spaeter darin klicken, nicht dem Zeiger nachjagen. */}
-          <IphoneFrame src={HERO.portrait.src} alt={HERO.portrait.alt} className="w-full" />
+          <IphoneFrame
+            src={HERO.portrait.src}
+            alt={HERO.portrait.alt}
+            demoUrl={HERO.demoUrl}
+            className="w-full"
+          />
         </FadeIn>
       </div>
     </section>
