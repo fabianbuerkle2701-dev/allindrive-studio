@@ -13,7 +13,7 @@ const asset = (p: string): string => import.meta.env.BASE_URL + p.replace(/^\/+/
 export const NAV_LINKS = [
   { label: 'Funktionen', href: '#funktionen' },
   { label: 'Einblick', href: '#einblick' },
-  { label: 'Sicherheit', href: '#ueber' },
+  { label: 'Über', href: '#ueber' },
   { label: 'Kontakt', href: '#kontakt' },
 ]
 
