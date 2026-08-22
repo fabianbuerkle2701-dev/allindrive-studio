@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
+import { createPortal } from 'react-dom'
 
 type IphoneFrameProps = {
   /** Standbild, das vor dem Start (und als Poster) im Bildschirm liegt. */
@@ -18,6 +19,10 @@ type IphoneFrameProps = {
 const LOGICAL_W = 390
 const LOGICAL_H = Math.round((LOGICAL_W * 19.5) / 9) // 845, passt zum Rahmen-Format
 
+// Unter dieser Breite ist das iPhone im Hero zu klein zum Bedienen: dort oeffnet
+// der Tap die Vorschau im Vollbild, wo die App in echter Handybreite rendert.
+const FULLSCREEN_BELOW = 700
+
 /**
  * Ein iPhone als Rahmen um einen App-Screenshot – optional mit echter,
  * klickbarer App darin. Die Rundungen sind in Prozent angegeben, damit die
@@ -26,6 +31,7 @@ const LOGICAL_H = Math.round((LOGICAL_W * 19.5) / 9) // 845, passt zum Rahmen-Fo
 export default function IphoneFrame({ src, alt, demoUrl, className = '', style }: IphoneFrameProps) {
   const screenRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
+  const [fullscreen, setFullscreen] = useState(false)
   const [size, setSize] = useState({ w: 0, h: 0 })
 
   // Bildschirmmasse schon vor dem Paint messen (kein Flackern) und laufend
@@ -39,6 +45,26 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
     ro.observe(el)
     return () => ro.disconnect()
   }, [])
+
+  // Vollbild: Seite nicht mehr scrollen und mit Escape schliessbar.
+  useEffect(() => {
+    if (!fullscreen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setFullscreen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = prev
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [fullscreen])
+
+  const starten = () => {
+    if (typeof window !== 'undefined' && window.innerWidth < FULLSCREEN_BELOW) setFullscreen(true)
+    else setActive(true)
+  }
 
   // Oben bleibt eine schwarze Statusleiste frei, damit die Dynamic Island den
   // App-Header (Wetter/Logo) nicht verdeckt. Poster und App werden auf die
@@ -92,7 +118,7 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
             style={scale > 0 ? boxStyle : undefined}
           />
 
-          {/* Die echte App: unter der Statusleiste, auf die Resthoehe skaliert. */}
+          {/* Die echte App im iPhone (Desktop): unter der Statusleiste, skaliert. */}
           {demoUrl && active && scale > 0 && (
             <iframe
               title="Allindrive – klickbare Vorschau"
@@ -107,7 +133,7 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
           {demoUrl && !active && (
             <button
               type="button"
-              onClick={() => setActive(true)}
+              onClick={starten}
               className="group absolute inset-0 flex flex-col items-center justify-end gap-[4%] pb-[14%] text-white"
               style={{ background: 'linear-gradient(180deg, rgba(12,12,12,0) 45%, rgba(12,12,12,0.72) 100%)' }}
               aria-label="Klickbare Vorschau starten"
@@ -126,9 +152,11 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </span>
-              <span className="px-[8%] text-center font-medium uppercase leading-tight tracking-wide"
-                style={{ fontSize: 'clamp(0.6rem, 1.1vw, 0.8rem)' }}>
-                Tippen und durch die App klicken
+              <span
+                className="px-[8%] text-center font-medium uppercase leading-tight tracking-wide"
+                style={{ fontSize: 'clamp(0.6rem, 1.1vw, 0.8rem)' }}
+              >
+                Tippen und ausprobieren
               </span>
             </button>
           )}
@@ -142,6 +170,46 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
           />
         </div>
       </div>
+
+      {/* Vollbild-Vorschau (v.a. mobil): die App rendert in echter Handybreite
+          und ist voll bedienbar. Per Portal an <body>, damit kein transformierter
+          Vorfahre das Fixed-Layout einschraenkt. */}
+      {fullscreen &&
+        demoUrl &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[60] flex flex-col bg-ink/95"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Allindrive – klickbare Vorschau"
+          >
+            <div className="flex items-center justify-between px-4 py-3">
+              <span className="text-xs font-medium uppercase tracking-widest text-chalk/70 sm:text-sm">
+                Live-Vorschau
+              </span>
+              <button
+                type="button"
+                onClick={() => setFullscreen(false)}
+                aria-label="Vorschau schließen"
+                className="flex items-center gap-2 rounded-full border-2 border-chalk/40 px-4 py-2 text-xs font-medium uppercase tracking-wider text-chalk transition-colors duration-200 hover:bg-chalk/10 sm:text-sm"
+              >
+                Schließen
+                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+                </svg>
+              </button>
+            </div>
+            <iframe
+              title="Allindrive – klickbare Vorschau"
+              src={demoUrl}
+              className="mx-auto w-full max-w-md flex-1 border-0 bg-black"
+            />
+            <p className="px-4 pb-4 pt-2 text-center text-xs text-chalk/50">
+              Demo-Ansicht · Änderungen werden nicht gespeichert
+            </p>
+          </div>,
+          document.body,
+        )}
     </div>
   )
 }
