@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 
 type IphoneFrameProps = {
   /** Standbild, das vor dem Start (und als Poster) im Bildschirm liegt. */
@@ -26,20 +26,36 @@ const LOGICAL_H = Math.round((LOGICAL_W * 19.5) / 9) // 845, passt zum Rahmen-Fo
 export default function IphoneFrame({ src, alt, demoUrl, className = '', style }: IphoneFrameProps) {
   const screenRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
-  const [scale, setScale] = useState(0)
+  const [size, setSize] = useState({ w: 0, h: 0 })
 
-  // Der iframe rendert in fester Logikbreite und wird auf die reale
-  // Bildschirmbreite skaliert. scale = Bildschirmbreite / 390.
-  useEffect(() => {
-    if (!active) return
+  // Bildschirmmasse schon vor dem Paint messen (kein Flackern) und laufend
+  // aktualisieren – Poster UND App werden identisch positioniert.
+  useLayoutEffect(() => {
     const el = screenRef.current
     if (!el) return
-    const messen = () => setScale(el.clientWidth / LOGICAL_W)
+    const messen = () => setSize({ w: el.clientWidth, h: el.clientHeight })
     messen()
     const ro = new ResizeObserver(messen)
     ro.observe(el)
     return () => ro.disconnect()
-  }, [active])
+  }, [])
+
+  // Oben bleibt eine schwarze Statusleiste frei, damit die Dynamic Island den
+  // App-Header (Wetter/Logo) nicht verdeckt. Poster und App werden auf die
+  // verbleibende Hoehe skaliert und mittig gesetzt (schmaler Rand = Geraeterand).
+  const TOP_INSET = 0.05
+  const topPx = size.h * TOP_INSET
+  const scale = size.h > 0 ? (size.h - topPx) / LOGICAL_H : 0
+  const appW = LOGICAL_W * scale
+  const leftPx = (size.w - appW) / 2
+  const boxStyle: CSSProperties = {
+    left: leftPx,
+    top: topPx,
+    width: LOGICAL_W,
+    height: LOGICAL_H,
+    transform: `scale(${scale})`,
+    transformOrigin: 'top left',
+  }
 
   return (
     <div className={`relative aspect-[9/19.5] ${className}`} style={style}>
@@ -61,28 +77,29 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
       >
         {/* Der Bildschirm. bg-black, damit vor dem Laden nichts durchscheint. */}
         <div ref={screenRef} className="relative h-full w-full overflow-hidden rounded-[12.5%/5.6%] bg-black">
-          {/* Standbild – bleibt als Unterlage liegen, bis die App geladen ist. */}
+          {/* Standbild – exakt wie die spaetere App positioniert (unter der
+              Statusleiste), damit beim Tap kein Versatz entsteht. */}
           <img
             src={src}
             alt={alt}
             fetchPriority="high"
             decoding="async"
-            className="absolute inset-0 h-full w-full object-cover object-top"
+            className={
+              scale > 0
+                ? 'absolute object-cover object-top'
+                : 'absolute inset-0 h-full w-full object-cover object-top'
+            }
+            style={scale > 0 ? boxStyle : undefined}
           />
 
-          {/* Die echte App, skaliert von 390px Logikbreite auf die Bildschirmbreite. */}
+          {/* Die echte App: unter der Statusleiste, auf die Resthoehe skaliert. */}
           {demoUrl && active && scale > 0 && (
             <iframe
               title="Allindrive – klickbare Vorschau"
               src={demoUrl}
               loading="lazy"
-              className="absolute left-0 top-0 border-0"
-              style={{
-                width: LOGICAL_W,
-                height: LOGICAL_H,
-                transform: `scale(${scale})`,
-                transformOrigin: 'top left',
-              }}
+              className="absolute border-0"
+              style={boxStyle}
             />
           )}
 

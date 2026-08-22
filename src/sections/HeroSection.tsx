@@ -74,7 +74,7 @@ export default function HeroSection() {
           Geraet immer ganz in den Hero passt. Der aeussere Behaelter haelt die
           Position, weil FadeIn und Magnet die Transform-Eigenschaft fuer ihre
           Bewegung belegen. */}
-      <div className="absolute left-1/2 top-1/2 z-10 w-[205px] -translate-x-1/2 -translate-y-1/2 sm:bottom-[3vh] sm:top-auto sm:w-[255px] sm:translate-y-0 md:w-[290px] lg:w-[320px]">
+      <div className="absolute left-1/2 top-1/2 z-10 w-[188px] -translate-x-1/2 -translate-y-1/2 sm:bottom-[2.5vh] sm:top-auto sm:w-[224px] sm:translate-y-0 md:w-[244px] lg:w-[264px]">
         <FadeIn delay={0.6} y={30} className="w-full">
           {/* Bewusst still: kein Magnet-Effekt mehr. Das iPhone soll man
               anschauen und spaeter darin klicken, nicht dem Zeiger nachjagen. */}
