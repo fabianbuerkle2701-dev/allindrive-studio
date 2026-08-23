@@ -13,6 +13,9 @@ export default defineConfig(({ command }) => ({
       input: {
         main: 'index.html',
         funktionen: 'funktionen/index.html',
+        preise: 'preise/index.html',
+        faq: 'faq/index.html',
+        kontakt: 'kontakt/index.html',
       },
     },
   },

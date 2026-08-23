@@ -8,16 +8,19 @@
 
 // Macht absolute Asset-Pfade base-sicher: lokal (base '/') unveraendert, auf
 // GitHub Pages (base '/allindrive-studio/') korrekt praefixiert.
-const asset = (p: string): string => import.meta.env.BASE_URL + p.replace(/^\/+/, '')
+export const asset = (p: string): string => import.meta.env.BASE_URL + p.replace(/^\/+/, '')
 
+// Zentrale Sales-Navigation, ueberall gleich (Startseite + Unterseiten). Jede
+// Information hat genau EINEN Hauptort; die Startseite ist der Ueberblick.
 export const NAV_LINKS = [
-  // Funktionen haben ihren einen Hauptort auf der eigenen Unterseite; die
-  // Startseiten-Sektion ist nur der Ueberblick und verlinkt dorthin.
-  { label: 'Funktionen', href: asset('/funktionen/') },
-  { label: 'Einblick', href: '#einblick' },
-  { label: 'Über', href: '#ueber' },
-  { label: 'Kontakt', href: '#kontakt' },
+  { label: 'Funktionen', href: asset('/funktionen/'), key: 'funktionen' },
+  { label: 'Preise', href: asset('/preise/'), key: 'preise' },
+  { label: 'FAQ', href: asset('/faq/'), key: 'faq' },
+  { label: 'Kontakt', href: asset('/kontakt/'), key: 'kontakt' },
 ]
+
+/** Kanonische Basis-URL (fuer Canonical/OG in den Unterseiten). */
+export const SITE_URL = 'https://fabianbuerkle2701-dev.github.io/allindrive-studio/'
 
 export const HERO = {
   wordmark: 'Allindrive.',

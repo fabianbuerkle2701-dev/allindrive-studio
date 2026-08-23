@@ -1,8 +1,8 @@
 import FadeIn from '../components/FadeIn'
+import PageNav from '../components/PageNav'
+import PageFooter from '../components/PageFooter'
 import { ContactButton, LiveProjectButton } from '../components/Buttons'
-
-// Base-sichere Asset-Pfade (lokal '/', im Build '/allindrive-studio/').
-const asset = (p: string): string => import.meta.env.BASE_URL + p.replace(/^\/+/, '')
+import { asset } from '../data/content'
 
 type Feature = {
   no: string
@@ -26,7 +26,7 @@ const FEATURES: Feature[] = [
       'Sonderfahrten zählen sich automatisch gegen das gesetzliche Soll mit.',
     ],
     img: {
-      src: asset('app/allindrive-adk.webp'),
+      src: asset('/app/allindrive-adk.webp'),
       alt: 'Digitale Ausbildungsdiagrammkarte in Allindrive mit allen Abschnitten und dem Fortschritt je Bereich',
     },
   },
@@ -41,7 +41,7 @@ const FEATURES: Feature[] = [
       'Alle Termine der Woche auf einen Blick, auch unterwegs.',
     ],
     img: {
-      src: asset('app/allindrive-kalender.webp'),
+      src: asset('/app/allindrive-kalender.webp'),
       alt: 'Wochenkalender in Allindrive mit Fahrstunden von Montag bis Samstag',
     },
   },
@@ -56,7 +56,7 @@ const FEATURES: Feature[] = [
       'Das Telefon bleibt während der Fahrstunde stumm – nachgesehen wird davor oder danach.',
     ],
     img: {
-      src: asset('app/allindrive-schueler-mobil.webp'),
+      src: asset('/app/allindrive-schueler-mobil.webp'),
       alt: 'Fahrschüler-Ansicht in Allindrive mit Fortschritt und den nächsten Terminen',
     },
   },
@@ -82,13 +82,6 @@ const FEATURES: Feature[] = [
       'Prüfungsreife wird sichtbar, nicht geschätzt.',
     ],
   },
-]
-
-const NAV = [
-  { label: 'Funktionen', href: asset('funktionen/'), current: true },
-  { label: 'Einblick', href: asset('') + '#einblick' },
-  { label: 'Über', href: asset('') + '#ueber' },
-  { label: 'Kontakt', href: asset('') + '#kontakt' },
 ]
 
 function FeatureBlock({ feature, index }: { feature: Feature; index: number }) {
@@ -138,8 +131,6 @@ function FeatureBlock({ feature, index }: { feature: Feature; index: number }) {
           />
         </div>
       ) : (
-        // Bewusst kein fremder Screenshot: eine ruhige Marken-Kachel statt einer
-        // irrefuehrenden Aufnahme.
         <div
           className={`flex aspect-[16/11] items-center justify-center overflow-hidden rounded-[28px] border border-chalk/12 px-8 ${flip ? 'md:order-1' : ''}`}
           style={{ background: 'radial-gradient(120% 120% at 30% 20%, #201a12 0%, #0c0c0c 60%)' }}
@@ -163,46 +154,8 @@ function FeatureBlock({ feature, index }: { feature: Feature; index: number }) {
 export default function FunktionenPage() {
   return (
     <main className="bg-ink" style={{ overflowX: 'clip' }}>
-      {/* Kopfzeile */}
-      <FadeIn
-        as="nav"
-        delay={0}
-        y={-20}
-        className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8"
-      >
-        <a
-          href={asset('')}
-          className="font-brand text-2xl font-extrabold leading-none text-white md:text-3xl"
-          aria-label="Zur Startseite"
-        >
-          Allindrive<span className="text-flame">.</span>
-        </a>
-        {/* Ab sm die volle Navigation ... */}
-        <div className="hidden items-center gap-5 text-sm font-medium uppercase tracking-wider text-chalk sm:flex md:gap-8 md:text-base">
-          {NAV.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              aria-current={link.current ? 'page' : undefined}
-              className={
-                'transition-opacity duration-200 ease-out hover:opacity-70 ' +
-                (link.current ? 'text-flame' : '')
-              }
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-        {/* ... auf schmalen Screens nur Kontakt, damit nichts ueberlaeuft. */}
-        <a
-          href={asset('') + '#kontakt'}
-          className="text-sm font-medium uppercase tracking-wider text-chalk transition-opacity duration-200 hover:opacity-70 sm:hidden"
-        >
-          Kontakt
-        </a>
-      </FadeIn>
+      <PageNav current="funktionen" />
 
-      {/* Titel */}
       <header className="px-6 pb-6 pt-16 md:px-10 md:pb-10 md:pt-24">
         <FadeIn delay={0.1} y={40}>
           <h1
@@ -221,14 +174,12 @@ export default function FunktionenPage() {
         </FadeIn>
       </header>
 
-      {/* Funktionsblöcke */}
       <div className="mx-auto max-w-6xl px-6 pb-8 md:px-10">
         {FEATURES.map((feature, index) => (
           <FeatureBlock key={feature.no} feature={feature} index={index} />
         ))}
       </div>
 
-      {/* Abschluss-CTA */}
       <section className="px-6 pb-16 pt-16 text-center md:px-10 md:pt-24">
         <FadeIn y={40}>
           <h2
@@ -248,22 +199,12 @@ export default function FunktionenPage() {
         <FadeIn delay={0.3} y={20}>
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <LiveProjectButton>App ansehen</LiveProjectButton>
-            <ContactButton href={asset('') + '#kontakt'}>Kontakt</ContactButton>
+            <ContactButton href={asset('/kontakt/')}>Kontakt</ContactButton>
           </div>
         </FadeIn>
       </section>
 
-      {/* Footer */}
-      <footer className="mx-auto max-w-6xl px-6 pb-12 md:px-10">
-        <div className="flex flex-col gap-4 border-t border-chalk/15 pt-8 text-chalk/50 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs sm:text-sm">© 2026 Allindrive · Im Beta-Betrieb, Zugänge nach Absprache</p>
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm" aria-label="Seiten">
-            <a className="transition-opacity duration-200 hover:opacity-70" href={asset('')}>Start</a>
-            <a className="transition-opacity duration-200 hover:opacity-70" href={asset('') + '#einblick'}>Einblick</a>
-            <a className="transition-opacity duration-200 hover:opacity-70" href={asset('') + '#kontakt'}>Kontakt</a>
-          </nav>
-        </div>
-      </footer>
+      <PageFooter />
     </main>
   )
 }
