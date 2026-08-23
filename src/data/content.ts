@@ -26,6 +26,17 @@ export const HERO = {
   wordmark: 'Allindrive.',
   /** Steht nur fuer Suchmaschinen und Screenreader in der Ueberschrift. */
   keyword: 'Fahrschulsoftware für Fahrlehrer',
+  /** Glaubwuerdigkeit in einer Zeile - der eine Satz, der diese Software von
+   *  jeder anderen unterscheidet: sie kommt aus der Praxis, nicht vom Reissbrett. */
+  kicker: 'Von einem Fahrlehrer gebaut · täglich im Auto im Einsatz',
+  /** Das Versprechen in den ersten drei Sekunden. Das Akzentwort steht separat,
+   *  damit es in Markenorange gesetzt werden kann. */
+  promiseLead: 'Deine ganze Fahrschule',
+  promiseAccent: 'passt aufs Handy',
+  promiseSub: 'Schüler, ADK, Kalender und Rechnungen — erfasst direkt nach der Fahrstunde, nicht abends am Schreibtisch.',
+  /** Steht am unteren Rand und macht den stärksten Beweis explizit: das ist nicht
+   *  das übliche Schein-Mockup, sondern die laufende App zum Anfassen. */
+  proof: 'Die App hier ist echt. Kein Mockup — tipp rein.',
   claim: 'fahrschulsoftware für fahrlehrer, die den arbeitstag nicht am schreibtisch verbringen',
   /** Die echte, klickbare App als schreibgeschützter Demo-Account. Wird erst
    *  beim Antippen geladen; bis dahin liegt das Poster darüber. */
