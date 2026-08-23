@@ -102,16 +102,15 @@ export default function HeroVideo() {
         playsInline
         preload="auto"
         poster={POSTER}
-        className="h-full w-full object-cover opacity-50"
+        className="h-full w-full object-cover opacity-[0.72]"
       />
-      {/* Kraeftig abdunkeln: das Video ist bewusst nur noch eine dezente Textur/
-          Tiefe im Hintergrund, kein praesentes Element. Die Strasse bleibt gerade
-          eben erahnbar. */}
+      {/* Overlay in der Mitte aufgelockert, damit die Strasse sichtbar ist; oben/
+          unten kraeftiger fuer die Lesbarkeit von Wortmarke, Headline und CTA. */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(12,12,12,0.90) 0%, rgba(12,12,12,0.66) 38%, rgba(12,12,12,0.62) 62%, rgba(12,12,12,0.84) 100%)',
+            'linear-gradient(180deg, rgba(12,12,12,0.80) 0%, rgba(12,12,12,0.46) 36%, rgba(12,12,12,0.38) 60%, rgba(12,12,12,0.66) 100%)',
         }}
       />
     </div>
