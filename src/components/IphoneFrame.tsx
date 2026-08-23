@@ -164,13 +164,9 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
             </button>
           )}
 
-          {/* Dynamic Island – liegt ueber allem. Bewusst schmal und dicht am
-              oberen Rand, damit sie den App-Header (Wetter/Logo) nicht verdeckt. */}
-          <span
-            className="pointer-events-none absolute left-1/2 top-[0.9%] z-10 h-[2.7%] w-[24%] -translate-x-1/2 rounded-full bg-black"
-            style={{ boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.05)' }}
-            aria-hidden="true"
-          />
+          {/* Keine Dynamic Island: der App-Screen laeuft randlos, nichts wird
+              verdeckt. Der Titan-Rahmen + Ecken + Seitentasten reichen als
+              Geraete-Andeutung. */}
         </div>
       </div>
 
