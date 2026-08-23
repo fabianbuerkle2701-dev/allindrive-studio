@@ -28,7 +28,7 @@ export const HERO = {
    *  beim Antippen geladen; bis dahin liegt das Poster darüber. */
   demoUrl: 'https://allindrive.netlify.app/?demo=1',
   portrait: {
-    src: asset('/app/allindrive-startbildschirm-demo.webp'),
+    src: asset('/app/allindrive-startbildschirm-hell.webp'),
     alt: 'Allindrive auf dem iPhone: der Startbildschirm des Fahrlehrers mit Begrüßung, Kennzahlen und den heutigen Fahrstunden',
     width: 390,
     height: 844,
