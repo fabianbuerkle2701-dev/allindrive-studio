@@ -102,16 +102,24 @@ export default function HeroVideo() {
         playsInline
         preload="auto"
         poster={POSTER}
-        className="h-full w-full object-cover opacity-50"
+        className="h-full w-full object-cover opacity-90"
       />
-      {/* Kraeftig abdunkeln: das Video ist bewusst nur noch eine dezente Textur/
-          Tiefe im Hintergrund, kein praesentes Element. Die Strasse bleibt gerade
-          eben erahnbar. */}
+      {/* Zwei leichte Ebenen statt einer kraeftigen: das reale Auto-Video bleibt
+          sichtbar (heller Wunsch), aber links ist genug Abdunklung fuer die weisse
+          Headline und oben/unten eine sanfte Vignette. Rechts (Himmel/Auto) bleibt
+          es hell. */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(12,12,12,0.90) 0%, rgba(12,12,12,0.66) 38%, rgba(12,12,12,0.62) 62%, rgba(12,12,12,0.84) 100%)',
+            'linear-gradient(90deg, rgba(12,12,12,0.78) 0%, rgba(12,12,12,0.45) 38%, rgba(12,12,12,0.12) 62%, rgba(12,12,12,0.30) 100%)',
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(12,12,12,0.45) 0%, rgba(12,12,12,0) 22%, rgba(12,12,12,0) 68%, rgba(12,12,12,0.55) 100%)',
         }}
       />
     </div>
