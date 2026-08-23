@@ -5,23 +5,19 @@ import { ContactButton } from '../components/Buttons'
 import { HERO, NAV_LINKS } from '../data/content'
 
 /**
- * Der Auftakt muss in drei Sekunden ueberzeugen, nicht nur die Marke zeigen.
- * Reihenfolge der Argumentation von oben nach unten:
- *   1. Wortmarke (wer)          -> die Marke, exakt wie in der App
- *   2. Glaubwuerdigkeit (kicker)-> von einem Fahrlehrer, aus der Praxis
- *   3. Versprechen (headline)   -> die ganze Fahrschule aufs Handy
- *   4. Beweis (das echte iPhone)-> keine Attrappe, sondern die laufende App
- *   5. Aktion (Zugang anfragen)
- * Das Versprechen fuellt bewusst die Flaeche zwischen Wortmarke und Geraet, die
- * vorher leer war (besonders auf dem Handy).
+ * Der Auftakt muss in drei Sekunden ueberzeugen. Aufbau:
+ *   - Wortmarke ueber die volle Breite (die Marke, exakt wie in der App).
+ *   - Darunter ein Split: links das Versprechen + Beweis + Aktion, rechts das
+ *     GROSSE, echte iPhone. So bleibt das Geraet praesent (nicht geschrumpft),
+ *     und die vorher leere Seitenflaeche traegt jetzt die Argumentation.
+ *   - Auf dem Handy stapelt alles: Wortmarke, kompaktes Versprechen, grosses
+ *     Geraet, Aktion.
  */
 export default function HeroSection() {
   return (
     <section
       id="start"
-      className="relative flex h-screen min-h-[640px] flex-col"
-      // 'clip' statt 'hidden': schneidet seitlich ab, ohne die Seite zu einem
-      // eigenen Scroll-Container zu machen.
+      className="relative flex h-screen min-h-[660px] flex-col"
       style={{ overflowX: 'clip' }}
     >
       {/* Selbst gerendertes Nacht-Fahrt-Video, scroll-gescrubbt, hinter allem. */}
@@ -46,36 +42,51 @@ export default function HeroSection() {
 
       <div className="relative z-10 overflow-hidden px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
-          {/* Die Wortmarke exakt wie in der App: Baloo 2 in 800, weiss, mit dem
-              Punkt in Markenorange. */}
-          <h1 className="mt-4 w-full whitespace-nowrap font-brand font-extrabold leading-none tracking-tight text-white text-[12vw] sm:text-[12.5vw] md:-mt-2 md:text-[13vw] lg:text-[13vw]">
+          {/* Wortmarke exakt wie in der App: Baloo 2 800, weiss, Punkt in Orange. */}
+          <h1 className="mt-3 w-full whitespace-nowrap font-brand font-extrabold leading-none tracking-tight text-white text-[12vw] md:-mt-2 md:text-[12.5vw] lg:text-[12.5vw]">
             Allindrive<span className="text-flame">.</span>
             <span className="sr-only">{HERO.keyword}</span>
           </h1>
         </FadeIn>
       </div>
 
-      {/* Versprechen + Beweis (iPhone) teilen sich die verbleibende Hoehe. */}
-      <div className="relative z-10 flex min-h-0 flex-1 flex-col px-6 md:px-10">
-        <FadeIn delay={0.32} y={18} className="mx-auto w-full max-w-4xl text-center">
-          <p className="text-[3.3vw] font-medium uppercase leading-tight tracking-[0.14em] text-flame sm:text-[1.05vw] md:text-sm lg:text-[0.95rem]">
+      {/* Split: Versprechen (links) + grosses iPhone (rechts). Auf dem Handy
+          gestapelt. */}
+      <div className="relative z-10 flex min-h-0 flex-1 flex-col px-6 pb-4 md:flex-row md:items-center md:gap-8 md:px-10 lg:gap-12">
+        {/* Versprechen */}
+        <FadeIn
+          delay={0.3}
+          y={18}
+          className="shrink-0 pt-2 text-center md:w-[42%] md:pt-0 md:text-left lg:w-[44%]"
+        >
+          <p className="text-[3.2vw] font-semibold uppercase leading-tight tracking-[0.14em] text-flame sm:text-sm md:text-[0.9rem] lg:text-base">
             {HERO.kicker}
           </p>
-          <h2 className="mx-auto mt-2 max-w-3xl font-semibold leading-[1.04] tracking-tight text-white text-[6.6vw] sm:mt-3 sm:text-[3.1vw] md:text-[2.9rem] lg:text-[3.35rem]">
+          {/* Bewusst gross und dicht gesetzt - das Versprechen ist die Ansage. */}
+          <h2 className="mx-auto mt-2 max-w-[16ch] font-semibold leading-[0.98] tracking-tight text-white text-[8.5vw] sm:text-[6vw] md:mx-0 md:mt-3 md:max-w-none md:text-[3.4rem] lg:text-[4.4rem]">
             {HERO.promiseLead}{' '}
             <span className="text-flame">{HERO.promiseAccent}</span>.
           </h2>
-          <p className="mx-auto mt-2.5 max-w-[38ch] text-[3.4vw] font-light leading-snug text-chalk/85 sm:mt-3 sm:text-[1.15vw] md:text-[1.05rem] lg:text-[1.1rem]">
+          <p className="mx-auto mt-3 max-w-[40ch] text-[3.4vw] font-light leading-snug text-chalk/85 sm:text-base md:mx-0 md:mt-4 md:max-w-[34ch] md:text-[1.05rem] lg:text-[1.15rem]">
             {HERO.promiseSub}
           </p>
+          {/* Beweis + Aktion stehen auf dem Desktop direkt beim Versprechen. */}
+          <div className="mt-5 hidden items-center gap-5 md:flex">
+            <ContactButton href="#kontakt" />
+            <span className="max-w-[15ch] text-xs font-light uppercase leading-snug tracking-wide text-chalk/80 lg:text-sm">
+              {HERO.proof}
+            </span>
+          </div>
         </FadeIn>
 
-        {/* Das echte, klickbare iPhone. Bewusst still: kein Magnet-Effekt. */}
-        <div className="flex min-h-0 flex-1 items-center justify-center pb-16 pt-3 sm:pb-14">
+        {/* Das echte, klickbare iPhone - gross und praesent. Explizite Viewport-
+            Hoehen, damit es im flex-row (items-center streckt nicht) sicher gross
+            bleibt und nicht auf 0 kollabiert. */}
+        <div className="flex min-h-0 flex-1 items-center justify-center pb-14 pt-3 md:pb-0 md:pt-0">
           <FadeIn
-            delay={0.6}
+            delay={0.55}
             y={30}
-            className="inline-flex h-full max-h-[min(760px,100%)] items-center"
+            className="inline-flex h-[50vh] max-h-[min(860px,100%)] items-center sm:h-[56vh] md:h-[64vh] lg:h-[70vh]"
           >
             <IphoneFrame
               src={HERO.portrait.src}
@@ -87,21 +98,10 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Beweis-Zeile und Aktion sitzen in den unteren Ecken, absolut gepinnt.
-          Als transparente Ebene wuerde die Zeile Taps auf das Geraet abfangen
-          -> pointer-events-none, nur Text und Button bleiben aktiv. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
-        <FadeIn
-          as="p"
-          delay={0.75}
-          y={20}
-          className="pointer-events-auto hidden max-w-[150px] font-light uppercase leading-snug tracking-wide text-chalk sm:block sm:max-w-[240px] md:max-w-[280px]"
-          style={{ fontSize: 'clamp(0.72rem, 1.35vw, 1.4rem)' }}
-        >
-          {HERO.proof}
-        </FadeIn>
-
-        <FadeIn delay={0.85} y={20} className="pointer-events-auto">
+      {/* Auf dem Handy sitzt die Aktion unten in der Ecke (auf dem Desktop steht
+          sie oben beim Versprechen, daher hier md:hidden). */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-end justify-end px-6 pb-7 sm:pb-8 md:hidden">
+        <FadeIn delay={0.7} y={20} className="pointer-events-auto">
           <ContactButton href="#kontakt" />
         </FadeIn>
       </div>
