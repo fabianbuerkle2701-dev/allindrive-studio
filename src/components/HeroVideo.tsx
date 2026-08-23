@@ -102,7 +102,7 @@ export default function HeroVideo() {
         playsInline
         preload="auto"
         poster={POSTER}
-        className="h-full w-full object-cover opacity-[0.72]"
+        className="h-full w-full object-cover opacity-95"
       />
       {/* Overlay in der Mitte aufgelockert, damit die Strasse sichtbar ist; oben/
           unten kraeftiger fuer die Lesbarkeit von Wortmarke, Headline und CTA. */}
@@ -110,7 +110,7 @@ export default function HeroVideo() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(12,12,12,0.80) 0%, rgba(12,12,12,0.46) 36%, rgba(12,12,12,0.38) 60%, rgba(12,12,12,0.66) 100%)',
+            'linear-gradient(180deg, rgba(12,12,12,0.66) 0%, rgba(12,12,12,0.26) 34%, rgba(12,12,12,0.18) 58%, rgba(12,12,12,0.5) 100%)',
         }}
       />
     </div>
