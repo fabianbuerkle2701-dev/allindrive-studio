@@ -66,10 +66,10 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
     else setActive(true)
   }
 
-  // Oben bleibt eine schwarze Statusleiste frei, damit die Dynamic Island den
-  // App-Header (Wetter/Logo) nicht verdeckt. Poster und App werden auf die
-  // verbleibende Hoehe skaliert und mittig gesetzt (schmaler Rand = Geraeterand).
-  const TOP_INSET = 0.05
+  // Kein schwarzer Balken oben: die App laeuft randlos bis zum oberen Rand
+  // (wie auf einem echten iPhone laeuft der Inhalt unter der Dynamic Island
+  // durch). Poster und App fuellen damit den ganzen Bildschirm.
+  const TOP_INSET = 0
   const topPx = size.h * TOP_INSET
   const scale = size.h > 0 ? (size.h - topPx) / LOGICAL_H : 0
   const appW = LOGICAL_W * scale
