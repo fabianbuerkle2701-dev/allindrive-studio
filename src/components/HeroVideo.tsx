@@ -57,8 +57,9 @@ export default function HeroVideo() {
     let visible = true
 
     const onScroll = () => {
-      // Fortschritt ueber knapp einen Bildschirm Scrollen.
-      const p = Math.min(Math.max(window.scrollY / (window.innerHeight * 1.05), 0), 1)
+      // Fortschritt ueber rund drei Bildschirmhoehen Scrollen -> das Video laeuft
+      // deutlich langsamer mit (die Baeume ziehen gemaechlich vorbei statt zu rasen).
+      const p = Math.min(Math.max(window.scrollY / (window.innerHeight * 3), 0), 1)
       target = p * Math.max(0.1, duration - 0.05)
     }
 
