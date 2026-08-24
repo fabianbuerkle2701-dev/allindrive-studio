@@ -45,9 +45,13 @@ function Zeichen({
 export default function AnimatedText({ text, className, style }: AnimatedTextProps) {
   const ref = useRef<HTMLParagraphElement>(null)
   const reduziert = useReducedMotion()
+  // Die Aufhellung soll abgeschlossen sein, sobald der Absatz ungefaehr in der
+  // Bildmitte steht (nicht erst, wenn er fast am oberen Rand angekommen ist).
+  // Darum endet der Fortschritt schon, wenn die Unterkante ~60% der Viewporthoehe
+  // erreicht - dann ist der Text mittig bereits vollstaendig weiss.
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 0.8', 'end 0.2'],
+    offset: ['start 0.92', 'end 0.7'],
   })
 
   const chars = Array.from(text)
