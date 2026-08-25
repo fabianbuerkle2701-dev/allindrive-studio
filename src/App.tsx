@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <main
-      className="bg-ink"
+      className="bg-paper"
       style={{ overflowX: 'clip', marginTop: verschiebung ? -verschiebung : undefined }}
     >
       <HeroSection />

@@ -16,7 +16,7 @@ const STEPS = [
 
 export default function KontaktPage() {
   return (
-    <main className="bg-ink" style={{ overflowX: 'clip' }}>
+    <main className="bg-paper" style={{ overflowX: 'clip' }}>
       <PageNav current="kontakt" />
 
       <header className="px-6 pb-6 pt-16 md:px-10 md:pb-10 md:pt-24">
@@ -29,7 +29,7 @@ export default function KontaktPage() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.25} y={20}>
-          <p className="mt-6 max-w-2xl font-light leading-relaxed text-chalk/85" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.35rem)' }}>
+          <p className="mt-6 max-w-2xl font-light leading-relaxed text-ink/85" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.35rem)' }}>
             Allindrive ist im Beta-Betrieb – Zugänge vergeben wir persönlich. Sag
             uns kurz Bescheid, dann richten wir deinen Zugang ein.
           </p>
@@ -39,9 +39,9 @@ export default function KontaktPage() {
             <ContactButton href={MAILTO}>Zugang anfragen</ContactButton>
             <LiveProjectButton>App ansehen</LiveProjectButton>
           </div>
-          <p className="mt-5 text-sm text-chalk/55">
+          <p className="mt-5 text-sm text-ink/55">
             Oder direkt per E-Mail:{' '}
-            <a href={MAILTO} className="text-chalk underline decoration-flame/60 underline-offset-4 transition-opacity hover:opacity-70">
+            <a href={MAILTO} className="text-ink underline decoration-flame/60 underline-offset-4 transition-opacity hover:opacity-70">
               {CONTACT_EMAIL}
             </a>
           </p>
@@ -56,10 +56,10 @@ export default function KontaktPage() {
               <span className="hero-heading font-black leading-none tracking-tight" style={{ fontSize: 'clamp(2.5rem, 7vw, 84px)' }}>
                 {s.no}
               </span>
-              <h2 className="mt-3 font-medium uppercase tracking-wide text-chalk" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>
+              <h2 className="mt-3 font-medium uppercase tracking-wide text-ink" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>
                 {s.title}
               </h2>
-              <p className="mt-2 font-light leading-relaxed text-chalk/70">{s.text}</p>
+              <p className="mt-2 font-light leading-relaxed text-ink/70">{s.text}</p>
             </FadeIn>
           ))}
         </div>
@@ -67,7 +67,7 @@ export default function KontaktPage() {
 
       <section className="px-6 pb-16 text-center md:px-10">
         <FadeIn y={30}>
-          <p className="mx-auto max-w-[520px] text-xs uppercase tracking-widest text-chalk/50 sm:text-sm">
+          <p className="mx-auto max-w-[520px] text-xs uppercase tracking-widest text-ink/50 sm:text-sm">
             Im Beta-Betrieb, Zugänge vergeben wir persönlich
           </p>
         </FadeIn>

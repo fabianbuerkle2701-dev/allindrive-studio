@@ -43,7 +43,7 @@ export const FAQS: { q: string; a: string }[] = [
 
 export default function FaqPage() {
   return (
-    <main className="bg-ink" style={{ overflowX: 'clip' }}>
+    <main className="bg-paper" style={{ overflowX: 'clip' }}>
       <PageNav current="faq" />
 
       <header className="px-6 pb-6 pt-16 md:px-10 md:pb-10 md:pt-24">
@@ -56,7 +56,7 @@ export default function FaqPage() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.25} y={20}>
-          <p className="mt-6 max-w-2xl font-light leading-relaxed text-chalk/85" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.35rem)' }}>
+          <p className="mt-6 max-w-2xl font-light leading-relaxed text-ink/85" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.35rem)' }}>
             Die häufigsten Fragen – ehrlich beantwortet. Was hier nicht steht,
             klären wir gern persönlich.
           </p>
@@ -66,8 +66,8 @@ export default function FaqPage() {
       <section className="mx-auto max-w-3xl px-6 pb-8 md:px-10">
         {FAQS.map((item, i) => (
           <FadeIn key={item.q} delay={Math.min(i * 0.06, 0.4)}>
-            <details className="group border-t border-chalk/12 py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-chalk">
+            <details className="group border-t border-ink/12 py-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-ink">
                 <span className="font-medium leading-snug" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.35rem)' }}>
                   {item.q}
                 </span>
@@ -79,13 +79,13 @@ export default function FaqPage() {
                   +
                 </span>
               </summary>
-              <p className="mt-3 max-w-2xl font-light leading-relaxed text-chalk/70" style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.15rem)' }}>
+              <p className="mt-3 max-w-2xl font-light leading-relaxed text-ink/70" style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.15rem)' }}>
                 {item.a}
               </p>
             </details>
           </FadeIn>
         ))}
-        <div className="border-t border-chalk/12" />
+        <div className="border-t border-ink/12" />
       </section>
 
       <section className="px-6 pb-16 pt-12 text-center md:px-10 md:pt-20">
@@ -98,7 +98,7 @@ export default function FaqPage() {
           </h2>
         </FadeIn>
         <FadeIn delay={0.15} y={20}>
-          <p className="mx-auto mt-6 max-w-[520px] font-light leading-relaxed text-chalk/85" style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}>
+          <p className="mx-auto mt-6 max-w-[520px] font-light leading-relaxed text-ink/85" style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}>
             Schreib uns – oder probier die App direkt auf der Startseite als
             klickbare Vorschau aus.
           </p>

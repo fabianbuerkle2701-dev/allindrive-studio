@@ -67,8 +67,8 @@ export default function AboutSection() {
             // schreibt dort selbst eine opacity und wuerde sie ueberschreiben.
             className="h-auto w-full select-none rounded-2xl object-cover opacity-70"
             style={{
-              border: '1px solid rgba(237, 228, 214, 0.12)',
-              boxShadow: '0 20px 45px rgba(0, 0, 0, 0.45)',
+              border: '1px solid rgba(36, 26, 18, 0.10)',
+              boxShadow: '0 20px 45px rgba(36, 26, 18, 0.12)',
             }}
           />
         </FadeIn>
@@ -87,7 +87,7 @@ export default function AboutSection() {
 
           <AnimatedText
             text={ABOUT.text}
-            className="mx-auto max-w-[560px] text-center font-medium leading-relaxed text-chalk"
+            className="mx-auto max-w-[560px] text-center font-medium leading-relaxed text-ink"
             style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
           />
         </div>

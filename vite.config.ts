@@ -16,6 +16,8 @@ export default defineConfig(({ command }) => ({
         preise: 'preise/index.html',
         faq: 'faq/index.html',
         kontakt: 'kontakt/index.html',
+        impressum: 'impressum/index.html',
+        datenschutz: 'datenschutz/index.html',
       },
     },
   },

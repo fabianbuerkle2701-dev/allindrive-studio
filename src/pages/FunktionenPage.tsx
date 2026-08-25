@@ -90,7 +90,7 @@ function FeatureBlock({ feature, index }: { feature: Feature; index: number }) {
     <FadeIn
       as="article"
       y={40}
-      className="grid grid-cols-1 items-center gap-8 border-t border-chalk/12 py-14 md:grid-cols-2 md:gap-14 md:py-20"
+      className="grid grid-cols-1 items-center gap-8 border-t border-ink/12 py-14 md:grid-cols-2 md:gap-14 md:py-20"
     >
       <div className={flip ? 'md:order-2' : ''}>
         <div className="flex items-baseline gap-4">
@@ -101,18 +101,18 @@ function FeatureBlock({ feature, index }: { feature: Feature; index: number }) {
             {feature.no}
           </span>
           <h2
-            className="font-medium uppercase leading-tight tracking-tight text-chalk"
+            className="font-medium uppercase leading-tight tracking-tight text-ink"
             style={{ fontSize: 'clamp(1.5rem, 3.4vw, 2.6rem)' }}
           >
             {feature.name}
           </h2>
         </div>
-        <p className="mt-5 max-w-xl font-light leading-relaxed text-chalk/85" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.2rem)' }}>
+        <p className="mt-5 max-w-xl font-light leading-relaxed text-ink/85" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.2rem)' }}>
           {feature.lead}
         </p>
         <ul className="mt-6 flex flex-col gap-3">
           {feature.points.map((p) => (
-            <li key={p} className="flex gap-3 text-chalk/75">
+            <li key={p} className="flex gap-3 text-ink/75">
               <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 flex-none rounded-full bg-flame" />
               <span className="font-light leading-relaxed">{p}</span>
             </li>
@@ -127,12 +127,12 @@ function FeatureBlock({ feature, index }: { feature: Feature; index: number }) {
             alt={feature.img.alt}
             loading="lazy"
             decoding="async"
-            className="w-full rounded-[28px] border border-chalk/12 object-cover shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
+            className="w-full rounded-[28px] border border-ink/12 object-cover shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
           />
         </div>
       ) : (
         <div
-          className={`flex aspect-[16/11] items-center justify-center overflow-hidden rounded-[28px] border border-chalk/12 px-8 ${flip ? 'md:order-1' : ''}`}
+          className={`flex aspect-[16/11] items-center justify-center overflow-hidden rounded-[28px] border border-ink/12 px-8 ${flip ? 'md:order-1' : ''}`}
           style={{ background: 'radial-gradient(120% 120% at 30% 20%, #201a12 0%, #0c0c0c 60%)' }}
         >
           <span
@@ -153,7 +153,7 @@ function FeatureBlock({ feature, index }: { feature: Feature; index: number }) {
  */
 export default function FunktionenPage() {
   return (
-    <main className="bg-ink" style={{ overflowX: 'clip' }}>
+    <main className="bg-paper" style={{ overflowX: 'clip' }}>
       <PageNav current="funktionen" />
 
       <header className="px-6 pb-6 pt-16 md:px-10 md:pb-10 md:pt-24">
@@ -166,7 +166,7 @@ export default function FunktionenPage() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.25} y={20}>
-          <p className="mt-6 max-w-2xl font-light leading-relaxed text-chalk/85" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.4rem)' }}>
+          <p className="mt-6 max-w-2xl font-light leading-relaxed text-ink/85" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.4rem)' }}>
             Alles, was eine Fahrschule täglich braucht – gebaut für Fahrlehrer, die
             unterwegs vom Handy arbeiten. Jede Funktion existiert in der laufenden
             App; du kannst sie auf der Startseite direkt ausprobieren.
@@ -190,7 +190,7 @@ export default function FunktionenPage() {
           </h2>
         </FadeIn>
         <FadeIn delay={0.15} y={20}>
-          <p className="mx-auto mt-6 max-w-[560px] font-light leading-relaxed text-chalk/85" style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}>
+          <p className="mx-auto mt-6 max-w-[560px] font-light leading-relaxed text-ink/85" style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}>
             Auf der Startseite läuft die echte App als klickbare Vorschau. Leg
             danach deine eigene Fahrschule an und dokumentiere die nächsten
             Fahrstunden darin.

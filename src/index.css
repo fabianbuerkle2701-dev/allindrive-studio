@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Selbst gehostete Marken-Schrift (Baloo 2, exakt die Schrift des Logos) - DSGVO-konform,
+   ohne Aufruf an Google-Server. Variabler Gewichtsbereich 400-800, latin + latin-ext. */
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/baloo2-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Baloo 2';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/baloo2-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 *,
 *::before,
 *::after {
@@ -13,27 +32,23 @@
 html,
 body,
 #root {
-  background: #0c0c0c;
+  background: #FBF3E6;
 }
 
 body {
-  font-family: 'Kanit', sans-serif;
+  font-family: 'Baloo 2', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Die Ueberschriften der Seite: ein Verlauf von warmem Grau nach Papier,
-   von oben nach unten, damit die Zeile nach unten hin aufhellt. */
+/* Die grossen Display-Ueberschriften der Seite: solides warmes Dunkelbraun auf
+   der hellen Creme-Flaeche (passt zum App-Look). */
 .hero-heading {
-  background: linear-gradient(180deg, #7a6a55 0%, #f5ebda 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #241a12;
 }
 
 ::selection {
   background: #ff9300;
-  color: #0c0c0c;
+  color: #fbf3e6;
 }
 
 :focus-visible {

@@ -111,7 +111,7 @@ export default function IphoneFrame({ src, alt, demoUrl, className = '', style }
           <img
             src={src}
             alt={alt}
-            fetchPriority="high"
+            {...{ fetchpriority: 'high' }}
             decoding="async"
             className={
               scale > 0

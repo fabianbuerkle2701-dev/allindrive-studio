@@ -55,10 +55,10 @@ export function LiveProjectButton({
       target="_blank"
       rel="noreferrer"
       className={
-        'inline-flex items-center justify-center rounded-full border-2 border-chalk text-chalk ' +
-        'font-medium uppercase tracking-widest ' +
+        'inline-flex items-center justify-center rounded-full border-2 border-ink/70 text-ink ' +
+        'font-semibold uppercase tracking-widest ' +
         'px-8 py-3 text-sm sm:px-10 sm:py-3.5 sm:text-base ' +
-        'gap-2 transition-colors duration-200 ease-out hover:bg-chalk/10 active:scale-[0.97] ' +
+        'gap-2 transition-colors duration-200 ease-out hover:bg-ink hover:text-paper active:scale-[0.97] ' +
         className
       }
     >

@@ -25,7 +25,7 @@ const VALUES = [
 
 export default function PreisePage() {
   return (
-    <main className="bg-ink" style={{ overflowX: 'clip' }}>
+    <main className="bg-paper" style={{ overflowX: 'clip' }}>
       <PageNav current="preise" />
 
       <header className="px-6 pb-6 pt-16 text-center md:px-10 md:pb-10 md:pt-24">
@@ -38,7 +38,7 @@ export default function PreisePage() {
           </h1>
         </FadeIn>
         <FadeIn delay={0.25} y={20}>
-          <p className="mx-auto mt-6 max-w-2xl font-light leading-relaxed text-chalk/85" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.35rem)' }}>
+          <p className="mx-auto mt-6 max-w-2xl font-light leading-relaxed text-ink/85" style={{ fontSize: 'clamp(1.05rem, 2vw, 1.35rem)' }}>
             Ein Plan, alles drin. Allindrive ist im Beta-Betrieb – Zugänge vergeben
             wir persönlich, den Preis besprechen wir dabei individuell und fair.
           </p>
@@ -48,25 +48,25 @@ export default function PreisePage() {
       {/* Ein Plan */}
       <section className="mx-auto max-w-3xl px-6 md:px-10">
         <FadeIn y={40}>
-          <div className="rounded-[32px] border-2 border-chalk/20 bg-[#111] p-7 sm:p-10">
+          <div className="rounded-[32px] border-2 border-ink/20 bg-[#111] p-7 sm:p-10">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="text-xs font-medium uppercase tracking-widest text-flame">Fahrlehrer-Zugang</p>
-                <h2 className="mt-2 font-brand text-3xl font-extrabold text-white sm:text-4xl">
+                <h2 className="mt-2 font-brand text-3xl font-extrabold text-ink sm:text-4xl">
                   Allindrive<span className="text-flame">.</span>
                 </h2>
               </div>
               {/* TODO Fabian: konkreten Preis einsetzen, sobald festgelegt
                   (z.B. "29 € / Fahrlehrer · Monat"). Bis dahin ehrliche Beta-Angabe. */}
               <div className="text-right">
-                <p className="text-2xl font-black leading-none text-white sm:text-3xl">Im Beta individuell</p>
-                <p className="mt-1 text-sm text-chalk/60">pro Fahrlehrer · monatlich, fair</p>
+                <p className="text-2xl font-black leading-none text-ink sm:text-3xl">Im Beta individuell</p>
+                <p className="mt-1 text-sm text-ink/60">pro Fahrlehrer · monatlich, fair</p>
               </div>
             </div>
 
             <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {INCLUDED.map((item) => (
-                <li key={item} className="flex gap-3 text-chalk/85">
+                <li key={item} className="flex gap-3 text-ink/85">
                   <span aria-hidden="true" className="mt-[0.15em] flex-none text-flame">✓</span>
                   <span className="font-light leading-snug">{item}</span>
                 </li>
@@ -77,7 +77,7 @@ export default function PreisePage() {
               <ContactButton href={asset('/kontakt/')}>Zugang anfragen</ContactButton>
               <LiveProjectButton>App ansehen</LiveProjectButton>
             </div>
-            <p className="mt-5 text-xs uppercase tracking-widest text-chalk/45">
+            <p className="mt-5 text-xs uppercase tracking-widest text-ink/45">
               Keine Einrichtungsgebühr · keine Mindestlaufzeit · monatlich kündbar
             </p>
           </div>
@@ -89,10 +89,10 @@ export default function PreisePage() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
           {VALUES.map((v, i) => (
             <FadeIn key={v.title} delay={i * 0.1} y={30}>
-              <h3 className="font-medium uppercase tracking-wide text-chalk" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>
+              <h3 className="font-medium uppercase tracking-wide text-ink" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>
                 {v.title}
               </h3>
-              <p className="mt-3 font-light leading-relaxed text-chalk/70">{v.text}</p>
+              <p className="mt-3 font-light leading-relaxed text-ink/70">{v.text}</p>
             </FadeIn>
           ))}
         </div>
@@ -109,7 +109,7 @@ export default function PreisePage() {
           </h2>
         </FadeIn>
         <FadeIn delay={0.15} y={20}>
-          <p className="mx-auto mt-6 max-w-[560px] font-light leading-relaxed text-chalk/85" style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}>
+          <p className="mx-auto mt-6 max-w-[560px] font-light leading-relaxed text-ink/85" style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}>
             Leg deine Fahrschule an und dokumentiere die nächsten Fahrstunden darin.
             Danach weißt du, ob es zu deinem Alltag passt – und was es dir wert ist.
           </p>

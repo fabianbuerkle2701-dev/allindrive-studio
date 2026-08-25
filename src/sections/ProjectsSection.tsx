@@ -54,7 +54,7 @@ function Karte({ project, index, total }: KarteProps) {
           transformOrigin: 'top center',
           top: `calc(clamp(1.5rem, 8vh, 6rem) + ${index * 28}px)`,
         }}
-        className={`relative mx-auto w-full max-w-6xl border-2 border-chalk bg-ink p-4 sm:p-6 md:p-8 ${RADIUS}`}
+        className={`relative mx-auto w-full max-w-6xl border border-ink/10 bg-cream p-4 shadow-[0_30px_80px_rgba(36,26,18,0.14)] sm:p-6 md:p-8 ${RADIUS}`}
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="flex items-start gap-4 sm:gap-6">
@@ -65,11 +65,11 @@ function Karte({ project, index, total }: KarteProps) {
               {project.no}
             </span>
             <span className="flex flex-col gap-1 pt-1">
-              <span className="text-xs uppercase tracking-widest text-chalk/60 sm:text-sm">
+              <span className="text-xs uppercase tracking-widest text-ink/55 sm:text-sm">
                 {project.label}
               </span>
               <span
-                className="font-medium uppercase leading-tight text-chalk"
+                className="font-semibold uppercase leading-tight text-ink"
                 style={{ fontSize: 'clamp(1.1rem, 2.4vw, 2rem)' }}
               >
                 {project.name}
@@ -126,7 +126,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="einblick"
-      className="relative z-10 -mt-10 bg-ink px-5 pb-24 pt-20 sm:-mt-12 sm:px-8 sm:pt-24 md:-mt-14 md:px-10 md:pt-28 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]"
+      className="relative z-10 -mt-10 bg-cream px-5 pb-24 pt-20 sm:-mt-12 sm:px-8 sm:pt-24 md:-mt-14 md:px-10 md:pt-28 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]"
     >
       <FadeIn
         as="h2"

@@ -15,13 +15,13 @@ export default function PageNav({ current }: { current?: string }) {
     >
       <a
         href={asset('')}
-        className="font-brand text-2xl font-extrabold leading-none text-white md:text-3xl"
+        className="font-brand text-2xl font-extrabold leading-none text-ink md:text-3xl"
         aria-label="Zur Startseite"
       >
         Allindrive<span className="text-flame">.</span>
       </a>
 
-      <div className="hidden items-center gap-5 text-sm font-medium uppercase tracking-wider text-chalk sm:flex md:gap-8 md:text-base">
+      <div className="hidden items-center gap-5 text-sm font-medium uppercase tracking-wider text-ink sm:flex md:gap-8 md:text-base">
         {NAV_LINKS.map((link) => (
           <a
             key={link.key}
@@ -40,7 +40,7 @@ export default function PageNav({ current }: { current?: string }) {
       {/* Mobil kompakt: nur Kontakt, damit nichts ueberlaeuft. */}
       <a
         href={asset('/kontakt/')}
-        className="text-sm font-medium uppercase tracking-wider text-chalk transition-opacity duration-200 hover:opacity-70 sm:hidden"
+        className="text-sm font-medium uppercase tracking-wider text-ink transition-opacity duration-200 hover:opacity-70 sm:hidden"
       >
         Kontakt
       </a>
