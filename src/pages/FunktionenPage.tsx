@@ -127,19 +127,24 @@ function FeatureBlock({ feature, index }: { feature: Feature; index: number }) {
             alt={feature.img.alt}
             loading="lazy"
             decoding="async"
-            className="w-full rounded-[28px] border border-ink/12 object-cover shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
+            className="w-full rounded-[28px] border border-ink/12 object-cover shadow-[0_30px_80px_rgba(36,26,18,0.14)]"
           />
         </div>
       ) : (
+        // Bewusst ohne fremdes Bildschirmfoto: ein warmes, gebrandetes Panel statt
+        // eines Fremd-Screenshots (Ehrlichkeitsregel). Passt ins helle Thema.
         <div
-          className={`flex aspect-[16/11] items-center justify-center overflow-hidden rounded-[28px] border border-ink/12 px-8 ${flip ? 'md:order-1' : ''}`}
-          style={{ background: 'radial-gradient(120% 120% at 30% 20%, #201a12 0%, #0c0c0c 60%)' }}
+          className={`flex aspect-[16/11] flex-col items-center justify-center gap-3 overflow-hidden rounded-[28px] border border-ink/12 px-8 text-center shadow-[0_30px_80px_rgba(36,26,18,0.10)] ${flip ? 'md:order-1' : ''}`}
+          style={{ background: 'radial-gradient(120% 120% at 30% 20%, #FFFDF9 0%, #F3E7CF 70%)' }}
         >
           <span
-            className="hero-heading text-center font-black uppercase leading-none tracking-tight"
+            className="font-black uppercase leading-none tracking-tight text-ink"
             style={{ fontSize: 'clamp(1.4rem, 3vw, 2.4rem)' }}
           >
             {feature.name}
+          </span>
+          <span className="text-xs font-medium uppercase tracking-widest text-flame sm:text-sm">
+            Live in der App
           </span>
         </div>
       )}

@@ -48,7 +48,7 @@ export default function PreisePage() {
       {/* Ein Plan */}
       <section className="mx-auto max-w-3xl px-6 md:px-10">
         <FadeIn y={40}>
-          <div className="rounded-[32px] border-2 border-ink/20 bg-[#111] p-7 sm:p-10">
+          <div className="rounded-[32px] border border-ink/12 bg-cream p-7 shadow-[0_30px_80px_rgba(36,26,18,0.12)] sm:p-10">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="text-xs font-medium uppercase tracking-widest text-flame">Fahrlehrer-Zugang</p>
